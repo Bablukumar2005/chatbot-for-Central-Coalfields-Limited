@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCL Information Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body background="pic3.png">
+    <header class="site-header">
+        <nav class="nav-bar">
+            <a href="https://www.centralcoalfields.in" target="_blank" class="nav-button">Visit CCL Website</a>
+            <a href="contact.html" class="nav-button">Contact</a>
+            <a href="signin.html" class="nav-button">Sign In</a> <!-- Updated to link to signin.html -->
+        </nav>
+    </header>
+    <div class="main-header">
+        <h1 id="dynamic-title">CCL Information Chatbot</h1>
+        <p>Developed by: Bablu Kumar</p>
+    </div>
+    <div class="container">
+        <div class="chat-column">
+            <div class="box chat-section">
+                <h2>Chat with CCL AI</h2>
+                <div id="chatBox" class="chat-box"></div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Ask about CCL (e.g., 'What is CCL’s history?')" aria-label="Chat input" />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = document.getElementById('dynamic-title');
+            const text = title.textContent;
+            title.textContent = '';
+            title.style.visibility = 'visible';
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                } else {
+                    title.classList.remove('typing');
+                }
+            }
+            title.classList.add('typing');
+            setTimeout(type, 500);
+        });
+    </script>
+</body>
+</html>
